@@ -1,10 +1,23 @@
-﻿namespace CountryData {
+﻿/// Country Data Class Library: 
+/// The Currency Class.
+///
+/// Author: Anthony Jaghab (c), all rights reserved.
 
-    #region Currency zzzz
+using System.Runtime.Serialization;
 
+namespace CountryData {
+
+    #region Currency class.
+
+    /// <summary>
+    /// A class containing information about the
+    /// code, name, and symbol of a particular currency.
+    /// </summary>
+
+    [DataContract]
     public class Currency {
 
-        #region Currency member variables
+        #region Currency class member fields.
 
         private string code;
         private string name;
@@ -12,18 +25,13 @@
 
         #endregion
 
-        public Currency() {
-            this.code = string.Empty;
-            this.name = string.Empty;
-            this.symbol = string.Empty;
-        }
-
         #region Properties of the Currency class.
 
         /// <summary>
-        /// Represents the code for this currency instance.
+        /// Property for the code of this currency instance.
         /// </summary>
 
+        [DataMember(Name = "code")]
         public string Code {
             get => this.code;
             set {
@@ -32,9 +40,10 @@
         }
 
         /// <summary>
-        /// Represents the name for this currency instance.
+        /// Property for the name of this currency instance.
         /// </summary>
 
+        [DataMember(Name = "name")]
         public string Name {
             get => this.name;
             set {
@@ -43,9 +52,10 @@
         }
 
         /// <summary>
-        /// Represents the symbol for this currency instance.
+        /// Property for the symbol of this currency instance.
         /// </summary>
 
+        [DataMember(Name = "symbol")]
         public string Symbol {
             get => this.symbol;
             set {
@@ -54,6 +64,19 @@
         }
 
         #endregion
+
+
+        #region Constructors and methods.
+
+        /// <summary>
+        /// Default constructor to instantiate member fields.
+        /// </summary>
+
+        public Currency() {
+            this.code = "USD";
+            this.name = "United States dollar";
+            this.symbol = "$";
+        }
 
         /// <summary>
         /// Returns a string containing information about
@@ -66,6 +89,6 @@
             $"The {this.name} ({this.symbol}) code is {this.code}";
 
     }
-
+    #endregion
     #endregion
 }
