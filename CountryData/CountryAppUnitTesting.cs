@@ -2,12 +2,16 @@
 
 namespace CountryData {
 
-    #region The class.
+    #region CountryAppUnitTesting class.
 
     /// <summary>
-    /// Provides methods for running an automated
-    /// test on the Currency and Language class.
+    /// Runs a test on all the country properties and
+    /// its class properties Currency and Language.
     /// 
+    /// <para>Updates to add a currency and language
+    /// to the new Lists added. Checks first index to.</para>
+    /// 
+    /// Author: Anthony Jaghab (c), all rights reserved.
     /// </summary>
 
     public class CountryAppUnitTesting {
@@ -15,8 +19,8 @@ namespace CountryData {
         #region Methods.
 
         /// <summary>
-        /// Runs a test on all the country properties and
-        /// its class properties Currency and Language.
+        /// Performs a unit test for all of the
+        /// Country classes properties.
         /// </summary>
 
         public void UnitTestCountry() {
@@ -36,6 +40,7 @@ namespace CountryData {
             string lanISO2 = "zxz";
             string lanName = "Zork";
             string lanNatName = "Skork";
+
             Language l = new Language {
                 ISO639_1 = lanISO1,
                 ISO639_2 = lanISO2,
@@ -49,35 +54,36 @@ namespace CountryData {
 
             Country c = new Country {
                 Capital = capital,
-                Currency = cur,
-                Language = l,
                 Population = population,
                 Region = region,
                 Subregion = subregion
             };
 
+            c.Currencies.Add(cur);
+            c.Languages.Add(l);
+
             Console.WriteLine("\n**********************");
             Console.WriteLine("Unit Testing: Country");
-            Console.WriteLine("**********************");
+            Console.WriteLine("************************");
 
             Console.Write("\nCountry captial property: ");
             Console.WriteLine((c.Capital == capital) ? "Pass" : "Fail");
 
             Console.Write("\nCountry Currency code property: ");
-            Console.WriteLine((c.Currency.Code == curCode) ? "Pass" : "Fail");
+            Console.WriteLine((c.Currencies[0].Code == curCode) ? "Pass" : "Fail");
             Console.Write("\nCountry Currency name property: ");
-            Console.WriteLine((c.Currency.Name == curName) ? "Pass" : "Fail");
+            Console.WriteLine((c.Currencies[0].Name == curName) ? "Pass" : "Fail");
             Console.Write("\nCountry Currency symbol property: ");
-            Console.WriteLine((c.Currency.Symbol == curSymb) ? "Pass" : "Fail");
+            Console.WriteLine((c.Currencies[0].Symbol == curSymb) ? "Pass" : "Fail");
 
             Console.Write("\nCountry Language ISO639_1 property: ");
-            Console.WriteLine((c.Language.ISO639_1 == lanISO1) ? "Pass" : "Fail");
+            Console.WriteLine((c.Languages[0].ISO639_1 == lanISO1) ? "Pass" : "Fail");
             Console.Write("\nCountry Language ISO639_2 property: ");
-            Console.WriteLine((c.Language.ISO639_2 == lanISO2) ? "Pass" : "Fail");
+            Console.WriteLine((c.Languages[0].ISO639_2 == lanISO2) ? "Pass" : "Fail");
             Console.Write("\nCountry Language Name property: ");
-            Console.WriteLine((c.Language.Name == lanName) ? "Pass" : "Fail");
+            Console.WriteLine((c.Languages[0].Name == lanName) ? "Pass" : "Fail");
             Console.Write("\nCountry Language NativeName property: ");
-            Console.WriteLine((c.Language.NativeName == lanNatName) ? "Pass" : "Fail");
+            Console.WriteLine((c.Languages[0].NativeName == lanNatName) ? "Pass" : "Fail");
 
             Console.Write("\nCountry population property: ");
             Console.WriteLine((c.Population == population) ? "Pass" : "Fail");
@@ -90,7 +96,6 @@ namespace CountryData {
 
             Console.WriteLine("**********************");
         }
-
 
         /// <summary>
         /// Runs a test on all the currency properties.
