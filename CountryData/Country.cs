@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -122,7 +123,7 @@ namespace CountryData {
         /// Attempts to serialize a Country type. 
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, and returns false</para>
+        /// writes the exception to Debug.Listeners, and returns false</para>
         /// </summary>
         /// <param name="path">Path to serialized object.</param>
 
@@ -142,7 +143,7 @@ namespace CountryData {
                 sw = new StreamWriter(path, true, System.Text.Encoding.UTF8);
                 sw.Write(utf8String);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:\n\n" + e.ToString());
+                Debug.WriteLine("\nException found:\n\n" + e.ToString());              
                 return false;
             }
 
@@ -155,7 +156,7 @@ namespace CountryData {
         /// Attempts to serialize a Country type. 
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, and returns false</para>
+        /// writes the exception to Debug.Listeners, and returns false</para>
         /// </summary>
         /// <param name="path">Path to serialized object.</param>
 
@@ -175,7 +176,7 @@ namespace CountryData {
                 sw = new StreamWriter(path, false, System.Text.Encoding.UTF8);
                 sw.Write(utf8String);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:\n\n" + e.ToString());
+                Debug.WriteLine("\nException found:\n\n" + e.ToString());
                 return false;
             }
 
@@ -188,7 +189,7 @@ namespace CountryData {
         /// Attempts to deserialize a serialized Country type and passes it out.
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, returns false, and
+        /// writes the exception to Debug.Listeners, returns false, and
         /// type = null</para>
         /// </summary>
         /// <param name="path">Path to deserialize object.</param>
@@ -210,7 +211,7 @@ namespace CountryData {
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Country>));
                 type = (List<Country>)ser.ReadObject(ms);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:" + e.ToString());
+                Debug.WriteLine("\nException found:" + e.ToString());
                 type = null;
                 return false;
             }
@@ -226,7 +227,7 @@ namespace CountryData {
         /// Attempts to deserialize a serialized Language type and passes it out.
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, returns false, and
+        /// writes the exception to Debug.Listeners, returns false, and
         /// type = null</para>
         /// </summary>
         /// <param name="path">Path to deserialize object.</param>
@@ -248,7 +249,7 @@ namespace CountryData {
                 DataContractSerializer ser = new DataContractSerializer(typeof(List<Country>));
                 type = (List<Country>)ser.ReadObject(ms);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:" + e.ToString());
+                Debug.WriteLine("\nException found:" + e.ToString());
                 type = null;
                 return false;
             }
