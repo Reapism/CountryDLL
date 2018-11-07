@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -102,7 +103,7 @@ namespace CountryData {
                 sw = new StreamWriter(path, false, System.Text.Encoding.UTF8);
                 sw.Write(utf8String);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:" + e.ToString());
+                Debug.WriteLine("\nException found:" + e.ToString());
                 return false;
             }
 
@@ -115,7 +116,7 @@ namespace CountryData {
         /// Attempts to serialize a Currency type. 
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, and returns false</para>
+        /// writes the exception to Debug.Listeners, and returns false</para>
         /// </summary>
         /// <param name="path">Path to serialized object.</param>
         /// <param name="type">Type to Serialize</param>
@@ -136,7 +137,7 @@ namespace CountryData {
                 sw = new StreamWriter(path, false, System.Text.Encoding.UTF8);
                 sw.Write(utf8String);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:" + e.ToString());
+                Debug.WriteLine("\nException found:" + e.ToString());
                 return false;
             }
 
@@ -149,7 +150,7 @@ namespace CountryData {
         /// Attempts to deserialize a serialized Currency type and passes it out.
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, returns false, and
+        /// writes the exception to Debug.Listeners, returns false, and
         /// type = null</para>
         /// </summary>
         /// <param name="path">Path to deserialize object.</param>
@@ -171,7 +172,7 @@ namespace CountryData {
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Currency));
                 type = (Currency)ser.ReadObject(ms);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:" + e.ToString());
+                Debug.WriteLine("\nException found:" + e.ToString());
                 type = null;
                 return false;
             }
@@ -187,7 +188,7 @@ namespace CountryData {
         /// Attempts to deserialize a serialized Language type and passes it out.
         /// 
         /// <para>Internally catches an Exception, in that case,
-        /// writes to console the exception, returns false, and
+        /// writes the exception to Debug.Listeners, returns false, and
         /// type = null</para>
         /// </summary>
         /// <param name="path">Path to deserialize object.</param>
@@ -209,7 +210,7 @@ namespace CountryData {
                 DataContractSerializer ser = new DataContractSerializer(typeof(Currency));
                 type = (Currency)ser.ReadObject(ms);
             } catch (Exception e) {
-                Console.WriteLine("\nException found:" + e.ToString());
+                Debug.WriteLine("\nException found:" + e.ToString());
                 type = null;
                 return false;
             }
